@@ -19,6 +19,12 @@ const HeaderContainer = styled.header`
     box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.05);
     position: fixed;
     z-index: 1;
+    color: #212121;
+
+    svg {
+        width: 20px;
+        height: 24px;
+    }
 `
 
 const TopMenu = styled.div`
@@ -36,6 +42,7 @@ const TopMenuText = styled.span`
     margin-left: 5px;
     font-size: 12px;
     line-height: 20px;
+    font-family: Roboto-Regular;
 `
 
 const LogoContainer = styled.div`
@@ -45,7 +52,7 @@ const LogoContainer = styled.div`
 const Logo = styled.img``
 
 const Menu = styled.nav`
-    font-weight: bold;
+    font-family: Roboto-Bold;
     font-size: 14px;
     margin: 10px 0;
 `
@@ -82,17 +89,25 @@ const SearchInput = styled(TextField)`
     background: transparent;
     border-bottom: 1px solid black!important;
     line-height: 20px;
+    font-family: Roboto-Regular!important;
 
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: #BDBDBD;
         opacity: 1; /* Firefox */
         font-size: 14px;
+        font-family: Roboto-Regular!important;
     }
 `
 
 const CartTotal = styled.div`
+    font-family: Roboto-Bold;
     line-height: 25px;
     text-align: right;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
 `
 
 const StyledShoppingCartIcon = styled(ShoppingCartIcon)`
