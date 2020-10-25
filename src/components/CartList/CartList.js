@@ -64,19 +64,23 @@ const RemoveProduct = styled.div`
     color: #E53935;
     float: right;
     margin-top: 46px;
+    cursor: pointer;
 `
 
 const CartList = (props) => {
     const [cart, setCart] = useState([]);
  
-    useEffect(async () => {
-      const result = await props
+    useEffect(async () => await props
         .getOffers()
         .then((response) => setCart(response))
-    }, []);
+    , []);
 
     const formatCurrency = (value) => value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     
+    const removeItem = (id) => {
+        setCart(cart.filter(product => product.id !== id));
+    };
+
     return (
         <CartListContainer>
             {
@@ -101,7 +105,7 @@ const CartList = (props) => {
                         </Grid>
                         <Grid item xs={2}>
                             <ProductPrice>{formatCurrency(product.valor_unitario)}</ProductPrice>
-                            <RemoveProduct><DeleteIcon /></RemoveProduct>
+                            <RemoveProduct onClick={() => removeItem(product.id)}><DeleteIcon /></RemoveProduct>
                         </Grid>
                     </Grid>
                 </Product>
