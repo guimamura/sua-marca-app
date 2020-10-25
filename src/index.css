@@ -11,3 +11,78 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.number-input input[type="number"] {
+  -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+          appearance: textfield;
+}
+.number-input input[type=number]::-webkit-inner-spin-button,
+.number-input input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.number-input {
+  margin-bottom: 3rem;
+}
+.number-input button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.number-input input[type=number] {
+  text-align: center;
+}
+.number-input.number-input {
+  border: 1px solid #ced4da;
+  width: 120px;
+  border-radius: .25rem;
+}
+.number-input.number-input button {
+  width: 26px;
+  height: 10px;
+  outline: 0;
+}
+.number-input.number-input button.minus {
+  padding-left: 10px;
+}
+button.minus:before,
+button.minus:after {
+  background-color: #9E9E9E;
+}
+button.plus:before,
+button.plus:after {
+  background-color: #E53935;
+}
+.number-input.number-input button:before,
+.number-input.number-input button:after {
+  width: .7rem;
+}
+.number-input.number-input input[type=number] {
+  font-family: 'Roboto-Medium';
+  max-width: 4rem;
+  padding: 0px;
+  border-top: 1px solid #9E9E9E;
+  border-bottom: 1px solid #9E9E9E;
+  border-right: 0;
+  border-left: 0;
+  border-width: 0 1px;
+  font-size: 14px;
+  height: 30px;
+  color: #495057;
+}
