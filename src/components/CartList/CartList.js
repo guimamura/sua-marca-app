@@ -81,10 +81,26 @@ const CartList = (props) => {
         setCart(cart.filter(product => product.id !== id));
     };
 
+    const decrease = (index) => {
+        const old = cart[index];
+        const updated = { ...old, quantidade: old.quantidade-1 > 0 ? old.quantidade-1 : old.quantidade }
+        const clone = [...cart];
+        clone[index] = updated;
+        setCart(clone);
+    }
+
+    const increase = (index) => {
+        const old = cart[index];
+        const updated = { ...old, quantidade: old.quantidade+1 }
+        const clone = [...cart];
+        clone[index] = updated;
+        setCart(clone);
+    }
+
     return (
         <CartListContainer>
             {
-                cart.map(product => (
+                cart.map((product, i) => (
                 <Product key={product.id}>
                     <Grid container>
                         <Grid item xs={2}>
@@ -97,10 +113,10 @@ const CartList = (props) => {
                         </Grid>
                         <Grid item xs={2}>
                             <div className="def-number-input number-input">
-                                <button onClick={() => console.log('decrease')} className="minus"></button>
+                                <button onClick={() => decrease(i)} className="minus"></button>
                                 <input className="quantity" name="quantity" value={product.quantidade} onChange={()=> console.log('change')}
                                 type="number" />
-                                <button onClick={() => console.log('increase')} className="plus"></button>
+                                <button onClick={() => increase(i)} className="plus"></button>
                             </div>
                         </Grid>
                         <Grid item xs={2}>
