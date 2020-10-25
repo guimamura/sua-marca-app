@@ -7,15 +7,13 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline'
 import DeleteIcon from '@material-ui/icons/Delete'
 
 const CartListContainer = styled.div`
-    width: 80%;
     padding-top: 30px;
-    margin: 0 auto;
 `
 
-const Cart = styled.div`
-    width: 100%;
+const Product = styled.div`
     padding: 10px 10px 15px 10px;
     border-bottom: 1px solid #E0E0E0;
+    margin: 0 40px 10px 0;
 `
 
 const ProductImage = styled.img`
@@ -81,37 +79,33 @@ const CartList = (props) => {
     
     return (
         <CartListContainer>
-            <Grid container>
-                <Grid item xs={8}>
-                    {
-                        cart.map(product => (
-                        <Cart key={product.id}>
-                            <Grid container>
-                                <Grid item xs={2}>
-                                    <ProductImage src={product.url_imagem} />
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <ProductName>{product.nome}</ProductName>
-                                    <ProductSku>SKU {product.sku}</ProductSku>
-                                    <ProductNote><ChatBubbleOutlineIcon />Adicionar observação</ProductNote>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <div className="def-number-input number-input">
-                                        <button onClick={() => console.log('decrease')} className="minus"></button>
-                                        <input className="quantity" name="quantity" value={product.quantidade} onChange={()=> console.log('change')}
-                                        type="number" />
-                                        <button onClick={() => console.log('increase')} className="plus"></button>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <ProductPrice>{formatCurrency(product.valor_unitario)}</ProductPrice>
-                                    <RemoveProduct><DeleteIcon /></RemoveProduct>
-                                </Grid>
-                            </Grid>
-                        </Cart>
-                    ))}
-                </Grid>
-            </Grid>
+            {
+                cart.map(product => (
+                <Product key={product.id}>
+                    <Grid container>
+                        <Grid item xs={2}>
+                            <ProductImage src={product.url_imagem} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <ProductName>{product.nome}</ProductName>
+                            <ProductSku>SKU {product.sku}</ProductSku>
+                            <ProductNote><ChatBubbleOutlineIcon />Adicionar observação</ProductNote>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <div className="def-number-input number-input">
+                                <button onClick={() => console.log('decrease')} className="minus"></button>
+                                <input className="quantity" name="quantity" value={product.quantidade} onChange={()=> console.log('change')}
+                                type="number" />
+                                <button onClick={() => console.log('increase')} className="plus"></button>
+                            </div>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <ProductPrice>{formatCurrency(product.valor_unitario)}</ProductPrice>
+                            <RemoveProduct><DeleteIcon /></RemoveProduct>
+                        </Grid>
+                    </Grid>
+                </Product>
+            ))}
         </CartListContainer>
     )
 }

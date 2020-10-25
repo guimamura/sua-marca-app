@@ -11,6 +11,11 @@ const CartContainer = styled.div`
     padding-top: 157.63px;
 `
 
+const CartContent = styled.div`
+    width: 80%;
+    margin: 0 auto;
+`
+
 const OffersMenu = styled.div`
     font-size: 12px;
     width: 100%;
@@ -92,8 +97,16 @@ const Cart = () => {
         <CartTitle>
             Carrinho
         </CartTitle>
-        <CartList />
-        <OrderSummary />
+        <CartContent>
+            <Grid container>
+                <Grid item xs={8}>
+                    <CartList />
+                </Grid>
+                <Grid item xs={4}>
+                    <OrderSummary />
+                </Grid>
+            </Grid>
+        </CartContent>
     </CartContainer>
     );
 }
